@@ -1,5 +1,8 @@
 var {Accommodation} = require('../../models/accommodation');
 var {calcularPromedio} =  require('../../config/lib/formules');
+var {converJsonToCsv} = require('../../config/lib/files')
+
+
 exports.findAlls = async(req, res) => {
     const accommodation = await Accommodation.find();
     res.status(200).json({
@@ -27,11 +30,18 @@ exports.findByPrecioAndHabitaciones = async (req, res) =>{
 
 
 exports.findPrecioPromedio = async(req,res)=>{
-
     var promedio = 0;
+    let accommodation;
+    try{
+        accommodation = await Accommodation.find();
+    } catch (e) {
+        console.log('Error');
+    }
+ 
 
-    for(let i = 0;i< await Accommodation.find().lengh;i++){
-        promedio += calcularPromedio(req.params.latitude,req.params.longitude,req.params.distance);
+    for(let i = 0;i< accommodation.length;i++){
+       
+        promedio +=  await calcularPromedio(accommodation[i],req.params.latitude,req.params.longitude,req.params.distance);
     }
 
     res.status(200).json({promedio})
@@ -39,5 +49,16 @@ exports.findPrecioPromedio = async(req,res)=>{
 
 
 exports.downloadReports = async(req,res)=>{
-
+    const accommodation = await Accommodation.find({$and:[{Latitud: req.params.lalitude},{Longitud:req.params.longitude}]});
+        if(req.params.type=='csv'){
+            const report = converJsonToCsv(JSON.stringify(accommodation));
+            res.status(200).json({accommodation});
+        }
+        else if(req.params.type=='pdf'){
+            res.status(200)
+        }
+        else{
+            res.status(200).send('Tipo de archivo no valido')
+        }
+        
 }

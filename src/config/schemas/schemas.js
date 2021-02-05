@@ -23,8 +23,8 @@ const schemas = {
         Habitaciones: {type: Number},
         Baños: {type: Number},
         Parking: {type: String},
-        SegundaMano: {type: String},
-        ArmariosEmpotrados: {type: String},
+        SegundaMano: {type: Boolean},
+        ArmariosEmpotrados: {type: Boolean},
         ConstruidoEn: {type: String},
         Amueblado: {type: String},
         CalefaccionIndividual: {type: String},
@@ -39,15 +39,15 @@ const schemas = {
         Distrito: {type: String},
         Terraza: {type: String},
         Trastero: {type: String},
-        CocinaEquipada: {type: String},
-        AireAcondicionado: {type: String},
+        CocinaEquipada: {type: Boolean},
+        AireAcondicionado: {type: Boolean},
         Piscina: {type: String},
-        Jardin: {type: String},
+        Jardin: {type: Boolean},
         MetrosCuadradosUtiles: {type: Number},
-        AptoPersonasMovilidadReducida: {type: String},
+        AptoPersonasMovilidadReducida: {type: Boolean},
         Plantas: {type: Number},
-        AdmitenMascotas: {type: String},
-        Balcon: {type: String}
+        AdmitenMascotas: {type: Boolean},
+        Balcon: {type: Boolean}
         
     })
 

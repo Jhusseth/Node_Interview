@@ -1,9 +1,15 @@
 // Const
 const express = require('express');
 const morgan = require('morgan');
+var path = require("path");
+
+const {uploadDatabase} = require('./config/lib/files')
 
 // Inicialization
 const app = express();
+
+//upload DataBase--> Drop tables and upload data
+uploadDatabase(path.resolve('src/config/data/resource_accommodation.csv'))
 
 
 // Settings

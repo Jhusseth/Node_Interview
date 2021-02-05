@@ -1,6 +1,6 @@
 var {Accommodation} = require('../../models/accommodation');
 var {calcularPromedio} =  require('../../config/lib/formules');
-var {converJsonToCsv} = require('../../config/lib/files')
+var {converJsonToCsv,converJsonToPdf} = require('../../config/lib/files')
 
 
 exports.findAlls = async(req, res) => {
@@ -49,20 +49,19 @@ exports.findPrecioPromedio = async(req,res)=>{
 
 
 exports.downloadReports = async(req,res)=>{
-    const report = null;
     const accommodation = await Accommodation.find({$and:[{Latitud: req.params.lalitude},{Longitud:req.params.longitude}]});
         if(req.params.type=='csv'){
-             report = converJsonToCsv(JSON.stringify(accommodation));
+            const report = converJsonToCsv(JSON.stringify(accommodation));
             res.status(200).json({
                 message: 'El archivo se guardo Cortrtectamente',
-                ruta:'src/reports/cvs'
+                ruta:'src/reports/csv'
             });
         }
         else if(req.params.type=='pdf'){
-            report = converJsonToPdf(JSON.stringify(accommodation));
+            const report = converJsonToPdf(JSON.stringify(accommodation));
             res.status(200).json({
                 message: 'El archivo se guardo Cortrtectamente',
-                ruta:'src/reports/pdf'
+                ruta: 'src/reports/pdf'
             });
         }
         else{

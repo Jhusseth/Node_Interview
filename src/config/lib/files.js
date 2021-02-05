@@ -1,6 +1,6 @@
 const { drop, Accommodation } = require('../../models/accommodation');
 const csv = require('csv-parser'); 
-const jsPDF =require('jspdf');
+const {jsPDF} =require('jspdf');
 const fs = require('fs');
 var path = require("path");
 
@@ -12,7 +12,7 @@ const parametros = {
       'Reformado','Telefonos','Tipo,Precio','Precio por metro','Direccion',
       'Provincia','Ciudad','Metros cuadrados','Habitaciones','Baños','Parking',
       'Segunda mano','Armarios Empotrados','Construido en','Amueblado',
-      'Calefacción individual','Certificación energética','Planta,Exterior',
+      'Calefacción individual','Certificación energética','Planta','Exterior',
       'Interior','Ascensor','Fecha','Calle','Barrio','Distrito','Terraza','Trastero',
       'Cocina Equipada','Cocina equipada','Aire acondicionado','Piscina','Jardín',
       'Metros cuadrados útiles','Apto para personas con movilidad reducida',
@@ -43,14 +43,40 @@ exports.uploadDatabase = async(filename)=>{
  // Descargar repportes en formato CSV dado un JSON
 exports.converJsonToCsv = (data) =>{
   var jsonData = DownloadJSON2CSV(data);
-  fs.appendFile(path.resolve("./src/reports/cvs/report"+ Date.now() +".csv"), jsonData, (err) => {
+  fs.appendFile(path.resolve("./src/reports/csv/report"+ Date.now() +".csv"), jsonData, (err) => {
     if (err) throw err;
     console.log('Archivo Creado Satisfactoriamente');
   });
 }
 exports.converJsonToPdf = (file) =>{
   const doc = new jsPDF();
-  doc.text(file);
+  var array = typeof file!= 'object' ? JSON.parse(file) : file;
+  var str = ''; 
+
+  let headers =['IdMongo','Latitud','Longitud','ID','Titulo','Anunciante','Descripcion',
+    'Reformado','Telefonos','Tipo,Precio','Precio por metro','Direccion',
+    'Provincia','Ciudad','Metros cuadrados','Habitaciones','Baños','Parking',
+    'Segunda mano','Armarios Empotrados','Construido en','Amueblado',
+    'Calefacción individual','Certificación energética','Planta','Exterior',
+    'Interior','Ascensor','Fecha','Calle','Barrio','Distrito','Terraza','Trastero',
+    'Cocina Equipada','Cocina equipada','Aire acondicionado','Piscina','Jardín',
+    'Metros cuadrados útiles','Apto para personas con movilidad reducida',
+    'Plantas','Se admiten mascotas','Balcón'];
+
+    for (var i = 0; i < array.length; i++) {
+      var line = '';
+      let cont =0;
+      for (var index in array[i]) {
+        line += headers[cont] + ":  " + array[i][index] + '\n';
+        cont++;
+      }
+  
+      line.slice(0, line.Length - 1);
+  
+      str += line + '\r\n';
+    }
+
+  doc.text(str,15,15);
   doc.save(path.resolve("./src/reports/pdf/report"+ Date.now() +".pdf"));
 }
 

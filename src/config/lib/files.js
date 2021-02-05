@@ -1,7 +1,6 @@
 const { drop, Accommodation } = require('../../models/accommodation');
 const csv = require('csv-parser'); 
-const jsPDF =require('jspdf'); 
-const {Parser} =require('json2csv'); 
+const jsPDF =require('jspdf');
 const fs = require('fs');
 var path = require("path");
 
@@ -44,13 +43,15 @@ exports.uploadDatabase = async(filename)=>{
  // Descargar repportes en formato CSV dado un JSON
 exports.converJsonToCsv = (data) =>{
   var jsonData = DownloadJSON2CSV(data);
-  fs.appendFile(path.resolve("./src/reports/report"+ Date.now() +".csv"), jsonData, (err) => {
+  fs.appendFile(path.resolve("./src/reports/cvs/report"+ Date.now() +".csv"), jsonData, (err) => {
     if (err) throw err;
     console.log('Archivo Creado Satisfactoriamente');
   });
 }
 exports.converJsonToPdf = (file) =>{
-  
+  const doc = new jsPDF();
+  doc.text(file);
+  doc.save(path.resolve("./src/reports/pdf/report"+ Date.now() +".pdf"));
 }
 
 

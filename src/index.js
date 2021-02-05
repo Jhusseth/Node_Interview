@@ -9,7 +9,12 @@ const {uploadDatabase} = require('./config/lib/files')
 const app = express();
 
 //upload DataBase--> Drop tables and upload data
-uploadDatabase(path.resolve('src/config/data/resource_accommodation.csv'))
+try{
+    uploadDatabase(path.resolve('src/config/data/resource_accommodation.csv'))
+}
+catch(e){
+    console.error(e.name + ': ' + e.message)
+}
 
 
 // Settings

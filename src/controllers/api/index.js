@@ -35,7 +35,7 @@ exports.findPrecioPromedio = async(req,res)=>{
     try{
         accommodation = await Accommodation.find();
     } catch (e) {
-        console.log('Error');
+        console.error(e.name + ': ' + e.message);
     }
  
 
@@ -49,13 +49,21 @@ exports.findPrecioPromedio = async(req,res)=>{
 
 
 exports.downloadReports = async(req,res)=>{
+    const report = null;
     const accommodation = await Accommodation.find({$and:[{Latitud: req.params.lalitude},{Longitud:req.params.longitude}]});
         if(req.params.type=='csv'){
-            const report = converJsonToCsv(JSON.stringify(accommodation));
-            res.status(200).json({accommodation});
+             report = converJsonToCsv(JSON.stringify(accommodation));
+            res.status(200).json({
+                message: 'El archivo se guardo Cortrtectamente',
+                ruta:'src/reports/cvs'
+            });
         }
         else if(req.params.type=='pdf'){
-            res.status(200)
+            report = converJsonToPdf(JSON.stringify(accommodation));
+            res.status(200).json({
+                message: 'El archivo se guardo Cortrtectamente',
+                ruta:'src/reports/pdf'
+            });
         }
         else{
             res.status(200).send('Tipo de archivo no valido')

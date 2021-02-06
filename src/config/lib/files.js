@@ -43,7 +43,7 @@ exports.uploadDatabase = async(filename)=>{
  // Descargar repportes en formato CSV dado un JSON
 exports.converJsonToCsv = (namefile,data) =>{
   var jsonData = DownloadJSON2CSV(data);
-  fs.appendFile(path.resolve("./src/public/csv/"+ namefile+".csv"), jsonData, (err) => {
+  fs.appendFile(path.join("./src/public/csv/"+ namefile+".csv"), jsonData, (err) => {
     if (err) throw err;
     console.log('Archivo Creado Satisfactoriamente');
   });
@@ -77,7 +77,7 @@ exports.converJsonToPdf = (namefile,data) =>{
     }
 
   doc.text(str,15,15);
-  doc.save(path.resolve("./src/public/pdf/"+namefile+".pdf"));
+  doc.save(path.join("./src/public/pdf/"+namefile+".pdf"));
 }
 
 

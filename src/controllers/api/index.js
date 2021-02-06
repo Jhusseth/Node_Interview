@@ -58,7 +58,7 @@ exports.downloadReports = async(req,res)=>{
             const report = converJsonToCsv(namefile,JSON.stringify(accommodation));
             res.status(200).json({
                 message: 'El archivo se guardo Correctamente',
-                ruta: process.env.STATIC_FILES +'/csv/' + namefile +'.cvs'
+                ruta: process.env.STATIC_FILES +'/csv/' + namefile +'.csv'
             });
             }
             catch(e){

@@ -50,7 +50,7 @@ exports.findPrecioPromedio = async(req,res)=>{
 
 exports.downloadReports = async(req,res)=>{
 
-    var namefile = report+"_"+ Date.now();
+    var namefile = 'report'+"_"+ Date.now();
 
     const accommodation = await Accommodation.find({$and:[{Latitud: req.params.lalitude},{Longitud:req.params.longitude}]});
         if(req.params.type=='csv'){

@@ -3,16 +3,16 @@
 ## EJEMPLOS
 
 ### GET ALL DATA OF BASEDATA MONGODB
-**https://interview-nodejs.herokuapp.com/**
+*https://interview-nodejs.herokuapp.com/*
 
 ### CONSULTAS 1.5
 ### Se pasan atributos para filtar el resultado por rango de precio
 
 ##### Parametros:
-*precio minimo= 400
-*precio maximo=600
+* precio minimo= 400
+* precio maximo=600
 
-** https://interview-nodejs.herokuapp.com/400&600 **
+https://interview-nodejs.herokuapp.com/400&600
 
 
 ### COLSULTA 2 FILTER DATA.
@@ -24,7 +24,7 @@
 * precio maximo=600
 * habitaciones=2
 
-** https://interview-nodejs.herokuapp.com/400&600&2 **
+ https://interview-nodejs.herokuapp.com/400&600&2
 
 
 ### COLSULTA 3 PROCESS DATA
@@ -35,11 +35,11 @@
 
 
 ##### Parametros:
-*Latitud= 40.365843
-*Lomgitud=-3.5874521
-*Distancia=10
+* Latitud= 40.365843
+* Lomgitud=-3.5874521
+* Distancia=10
 
-** https://interview-nodejs.herokuapp.com/40.365843&-3.5874521/10 **
+https://interview-nodejs.herokuapp.com/40.365843&-3.5874521/10
 
 
 ### CONSULTA 4 REPORT DATA
@@ -47,10 +47,10 @@
 #### Se pasan los atributos de filtro, coordenadas y tipo de reporte (PDF, CSV) y dicho reporte generado se guarde en una carpeta y descargar.
 
  ##### Parametros:
-*Latitud= 40.365843 
-*Lomgitud=-3.5884521 
-*type file=csv
+* Latitud= 40.365843 
+* Lomgitud=-3.5884521 
+* type file=csv
 
-** http://localhost:3000/downloads/40.365843&-3.5884521/csv **
+http://localhost:3000/downloads/40.365843&-3.5884521/csv
 
 

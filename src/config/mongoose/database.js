@@ -1,7 +1,7 @@
 'use strict';
 const mongoose = require('mongoose');
 
-var mongoDB  = 'mongodb://localhost/test';
+var mongoDB  = "mongodb+srv://jhusseth:<filipjfray>@cluster0.kpkb1.mongodb.net/<test_interview>?retryWrites=true&w=majority";
 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;

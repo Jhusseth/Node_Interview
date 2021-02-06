@@ -33,6 +33,9 @@ app.use(express.urlencoded({ extended: false }));
 //Routes
 app.use("/",require('./routes/api/index'));
 
+//statics
+app.use('/files', express.static(__dirname + '/public'));
+
 // Server
 app.listen(app.get('port'), () => {
     console.log('Server listening on port: ', app.get('port'));

@@ -41,16 +41,16 @@ exports.uploadDatabase = async(filename)=>{
  }
 
  // Descargar repportes en formato CSV dado un JSON
-exports.converJsonToCsv = (data) =>{
+exports.converJsonToCsv = (namefile,data) =>{
   var jsonData = DownloadJSON2CSV(data);
-  fs.appendFile(path.resolve("./src/reports/csv/report"+ Date.now() +".csv"), jsonData, (err) => {
+  fs.appendFile(path.resolve("./src/reports/csv/"+ namefile+".csv"), jsonData, (err) => {
     if (err) throw err;
     console.log('Archivo Creado Satisfactoriamente');
   });
 }
-exports.converJsonToPdf = (file) =>{
+exports.converJsonToPdf = (namefile,data) =>{
   const doc = new jsPDF();
-  var array = typeof file!= 'object' ? JSON.parse(file) : file;
+  var array = typeof data!= 'object' ? JSON.parse(data) : data;
   var str = ''; 
 
   let headers =['IdMongo','Latitud','Longitud','ID','Titulo','Anunciante','Descripcion',
@@ -77,7 +77,7 @@ exports.converJsonToPdf = (file) =>{
     }
 
   doc.text(str,15,15);
-  doc.save(path.resolve("./src/reports/pdf/report"+ Date.now() +".pdf"));
+  doc.save(path.resolve("./src/reports/pdf/"+namefile+".pdf"));
 }
 
 

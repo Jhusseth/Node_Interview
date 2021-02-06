@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Routes
-app.use(require('./routes/api/index'));
+app.use("/",require('./routes/api/index'));
 
 // Server
 app.listen(app.get('port'), () => {

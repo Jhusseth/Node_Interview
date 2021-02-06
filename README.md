@@ -6,22 +6,26 @@
 **https://interview-nodejs.herokuapp.com/**
 
 ### CONSULTAS 1.5
-** Parametros: **
+### Se pasan atributos para filtar el resultado por rango de precio
+
+##### Parametros:
 *precio minimo= 400
 *precio maximo=600
 
 ** https://interview-nodejs.herokuapp.com/400&600 **
 
+
 ### COLSULTA 2 FILTER DATA.
 
 #### Se pasan atributos para poder filtrar el resultado de la data por: 1.(Rango de precio mínimo y máximo), 2.(Número de habitaciones).
 
-** Parametros: **
+##### Parametros:
 * precio minimo= 400
 * precio maximo=600
 * habitaciones=2
 
 ** https://interview-nodejs.herokuapp.com/400&600&2 **
+
 
 ### COLSULTA 3 PROCESS DATA
 
@@ -29,7 +33,8 @@
 
 ![Alt text](https://i.stack.imgur.com/U1c9F.png "Ejemplo")
 
-** Parametros: **
+
+##### Parametros:
 *Latitud= 40.365843
 *Lomgitud=-3.5874521
 *Distancia=10
@@ -41,7 +46,7 @@
 
 #### Se pasan los atributos de filtro, coordenadas y tipo de reporte (PDF, CSV) y dicho reporte generado se guarde en una carpeta y descargar.
 
-** Parametros: ** 
+ ##### Parametros:
 *Latitud= 40.365843 
 *Lomgitud=-3.5884521 
 *type file=csv

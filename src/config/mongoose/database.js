@@ -1,9 +1,9 @@
 'use strict';
 const mongoose = require('mongoose');
 
-var mongoDB  = "mongodb+srv://jhusseth:<filipjfray>@cluster0.kpkb1.mongodb.net/<test_interview>?retryWrites=true&w=majority";
+var mongoDB = require('../keys');
 
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(mongoDB.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error'));
 mongoose.connection.once('open', () => {

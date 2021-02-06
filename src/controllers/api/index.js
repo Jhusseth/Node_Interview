@@ -50,22 +50,32 @@ exports.findPrecioPromedio = async(req,res)=>{
 
 exports.downloadReports = async(req,res)=>{
 
-    var namefile = 'report'+"_"+ Date.now();
+    let namefile = "report"+"_"+ Date.now();
 
     const accommodation = await Accommodation.find({$and:[{Latitud: req.params.lalitude},{Longitud:req.params.longitude}]});
         if(req.params.type=='csv'){
-            const report = converJsonToCsv(JSON.stringify(namefile,accommodation));
+            try{
+            const report = converJsonToCsv(namefile,JSON.stringify(accommodation));
             res.status(200).json({
                 message: 'El archivo se guardo Correctamente',
                 ruta: process.env.STATIC_FILES +'/csv/' + namefile
             });
+            }
+            catch(e){
+                console.log(e.message)
+            }
         }
         else if(req.params.type=='pdf'){
-            const report = converJsonToPdf(JSON.stringify(namefile,accommodation));
+            try{
+            const report = converJsonToPdf(namefile,JSON.stringify(accommodation));
             res.status(200).json({
                 message: 'El archivo se guardo Correctamente',
                 ruta: process.env.STATIC_FILES +'/pdf/' + namefile
             });
+            }
+            catch(e){
+                console.log(e.message)
+            }
         }
         else{
             res.status(200).send('Tipo de archivo no valido')

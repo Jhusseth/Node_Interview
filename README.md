@@ -12,7 +12,7 @@
 * precio minimo= 400
 * precio maximo=600
 
-https://interview-nodejs.herokuapp.com/400&600
+*https://interview-nodejs.herokuapp.com/400&600*
 
 
 ### COLSULTA 2 FILTER DATA.
@@ -24,7 +24,7 @@ https://interview-nodejs.herokuapp.com/400&600
 * precio maximo=600
 * habitaciones=2
 
- https://interview-nodejs.herokuapp.com/400&600&2
+ *https://interview-nodejs.herokuapp.com/400&600&2*
 
 
 ### COLSULTA 3 PROCESS DATA
@@ -39,7 +39,7 @@ https://interview-nodejs.herokuapp.com/400&600
 * Lomgitud=-3.5874521
 * Distancia=10
 
-https://interview-nodejs.herokuapp.com/40.365843&-3.5874521/10
+*https://interview-nodejs.herokuapp.com/40.365843&-3.5874521/10*
 
 
 ### CONSULTA 4 REPORT DATA
@@ -51,6 +51,10 @@ https://interview-nodejs.herokuapp.com/40.365843&-3.5874521/10
 * Lomgitud=-3.5884521 
 * type file=csv
 
-http://localhost:3000/downloads/40.365843&-3.5884521/csv
+*http://localhost:3000/downloads/40.365843&-3.5884521/csv*
+
+##### Ejemplo descarga
+
+*https://interview-nodejs.herokuapp.com/files/csv/report_1612587582885.csv*
 
 

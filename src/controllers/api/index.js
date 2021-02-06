@@ -30,7 +30,7 @@ exports.findByPrecioAndHabitaciones = async (req, res) =>{
 
 
 exports.findPrecioPromedio = async(req,res)=>{
-    var totalPrecioMetro = 0;
+    var promedio = 0;
     let accommodation;
     try{
         accommodation = await Accommodation.find();
@@ -41,10 +41,8 @@ exports.findPrecioPromedio = async(req,res)=>{
 
     for(let i = 0;i< accommodation.length;i++){
        
-        totalPrecioMetro +=  await calcularPromedio(accommodation[i],req.params.latitude,req.params.longitude,req.params.distance);
+        promedio +=  await calcularPromedio(accommodation[i],req.params.latitude,req.params.longitude,req.params.distance);
     }
-
-    let promedio = totalPrecioMetro/accommodation.length;
 
     res.status(200).json({promedio})
 }

@@ -9,14 +9,14 @@ const parametros = {
     noheader: false,
     headers: [
       'Latitud','Longitud','ID','Titulo','Anunciante','Descripcion',
-      'Reformado','Telefonos','Tipo,Precio','Precio por metro','Direccion',
-      'Provincia','Ciudad','Metros cuadrados','Habitaciones','Baños','Parking',
-      'Segunda mano','Armarios Empotrados','Construido en','Amueblado',
-      'Calefacción individual','Certificación energética','Planta','Exterior',
+      'Reformado','Telefonos','Tipo','Precio','PrecioMetro','Direccion',
+      'Provincia','Ciudad','MetrosCuadrados','Habitaciones','Baños','Parking',
+      'SegundaMano','ArmariosEmpotrados','ConstruidoEn','Amueblado',
+      'CalefaccionIndividual','CertificacionEnergetica','Planta','Exterior',
       'Interior','Ascensor','Fecha','Calle','Barrio','Distrito','Terraza','Trastero',
-      'Cocina Equipada','Cocina equipada','Aire acondicionado','Piscina','Jardín',
-      'Metros cuadrados útiles','Apto para personas con movilidad reducida',
-      'Plantas','Se admiten mascotas','Balcón'
+      'CocinaEquipada','Cocinaequipada','AireAcondicionado','Piscina','Jardin',
+      'MetrosCuadradosUtiles','AptoParaPersonasConMovilidadReducida',
+      'Plantas','SeAdmitenMascotas','Balcon'
     ],
     checkColumn: true,
     workerNum: 1
@@ -28,7 +28,7 @@ exports.uploadDatabase = async(filename)=>{
       console.log('Datos eliminados')});
 
     fs.createReadStream(filename)
-      .pipe(csv())
+      .pipe(csv(parametros))
       .on('data', (row) => {
         Accommodation.create(row).then(()=>{
           console.log("add " + row.ID)
@@ -54,14 +54,14 @@ exports.converJsonToPdf = (namefile,data) =>{
   var str = ''; 
 
   let headers =['IdMongo','Latitud','Longitud','ID','Titulo','Anunciante','Descripcion',
-    'Reformado','Telefonos','Tipo,Precio','Precio por metro','Direccion',
-    'Provincia','Ciudad','Metros cuadrados','Habitaciones','Baños','Parking',
-    'Segunda mano','Armarios Empotrados','Construido en','Amueblado',
-    'Calefacción individual','Certificación energética','Planta','Exterior',
+    'Reformado','Telefonos','Tipo','Precio','PrecioPorMetro','Direccion',
+    'Provincia','Ciudad','MetrosCuadrados','Habitaciones','Baños','Parking',
+    'SegundaMano','ArmariosEmpotrados','ConstruidoEn','Amueblado',
+    'CalefaccionIndividual','CertificacionEnergetica','Planta','Exterior',
     'Interior','Ascensor','Fecha','Calle','Barrio','Distrito','Terraza','Trastero',
-    'Cocina Equipada','Cocina equipada','Aire acondicionado','Piscina','Jardín',
-    'Metros cuadrados útiles','Apto para personas con movilidad reducida',
-    'Plantas','Se admiten mascotas','Balcón'];
+    'CocinaEquipada','Cocinaequipada','AireAcondicionado','Piscina','Jardin',
+    'MetrosCuadradosUtiles','Apto para personas con movilidad reducida',
+    'Plantas','SeAdmitenMascotas','Balcon'];
 
     for (var i = 0; i < array.length; i++) {
       var line = '';
@@ -86,14 +86,14 @@ function DownloadJSON2CSV(objArray) {
   var str = '';
 
     str +="IdMongo,Latitud,Longitud,ID,Titulo,Anunciante,Descripcion,"+
-          "Reformado,Telefonos,Tipo,Precio,Precio por metro,Direccion,"+
-          "Provincia,Ciudad,Metros cuadrados,Habitaciones,Baños,Parking,"+
-          "Segunda mano,Armarios Empotrados,Construido en,Amueblado,"+
-          "Calefacción individual,Certificación energética,Planta,Exterior,"+
+          "Reformado,Telefonos,Tipo,Precio,PrecioPorMetro,Direccion,"+
+          "Provincia,Ciudad,MetrosCuadrados,Habitaciones,Baños,Parking,"+
+          "Segunda mano,ArmariosEmpotrados,ConstruidoEn,Amueblado,"+
+          "CalefaccionIndividual,CertificacionEnergetica,Planta,Exterior,"+
           "Interior,Ascensor,Fecha,Calle,Barrio,Distrito,Terraza,Trastero,"+
-          "Cocina Equipada,Cocina equipada,Aire acondicionado,Piscina,Jardín,"+
-          "Metros cuadrados útiles,Apto para personas con movilidad reducida,"+
-          "Plantas,Se admiten mascotas,Balcón" + "\r\n";
+          "CocinaEquipada,Cocinaequipada,AireAcondicionado,Piscina,Jardin,"+
+          "MetrosCuadradosUtiles,AptoParaPersonasConMovilidad reducida,"+
+          "Plantas,SeAdmitenMascotas,Balcon" + "\r\n";
 
   for (var i = 0; i < array.length; i++) {
     var line = '';

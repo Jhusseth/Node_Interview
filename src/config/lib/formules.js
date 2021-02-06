@@ -10,7 +10,7 @@ const calcularPromedio = function(accommodation,latitude,longitude,distance){
     const realDistance = c*earthRadius;
 
     if(realDistance<=distance && realDistance-distance!==0){
-        return accommodation.Precio;
+        return accommodation.PrecioMetro;
     }
     else{
         return 0;

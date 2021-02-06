@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 var path = require("path");
 
+require('dotenv/config')
+
 const {uploadDatabase} = require('./config/lib/files')
 
 // Inicialization

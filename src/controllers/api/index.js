@@ -58,7 +58,7 @@ exports.downloadReports = async(req,res)=>{
             const report = converJsonToCsv(namefile,JSON.stringify(accommodation));
             res.status(200).json({
                 message: 'El archivo se guardo Correctamente',
-                ruta: process.env.STATIC_FILES +'/csv/' + namefile
+                ruta: process.env.STATIC_FILES +'/csv/' + namefile+ + '.cvs'
             });
             }
             catch(e){
@@ -70,7 +70,7 @@ exports.downloadReports = async(req,res)=>{
             const report = converJsonToPdf(namefile,JSON.stringify(accommodation));
             res.status(200).json({
                 message: 'El archivo se guardo Correctamente',
-                ruta: process.env.STATIC_FILES +'/pdf/' + namefile
+                ruta: process.env.STATIC_FILES +'/pdf/' + namefile + '.pdf'
             });
             }
             catch(e){

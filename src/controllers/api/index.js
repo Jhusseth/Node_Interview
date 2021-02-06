@@ -53,14 +53,14 @@ exports.downloadReports = async(req,res)=>{
         if(req.params.type=='csv'){
             const report = converJsonToCsv(JSON.stringify(accommodation));
             res.status(200).json({
-                message: 'El archivo se guardo Cortrtectamente',
+                message: 'El archivo se guardo Correctamente',
                 ruta:'src/reports/csv'
             });
         }
         else if(req.params.type=='pdf'){
             const report = converJsonToPdf(JSON.stringify(accommodation));
             res.status(200).json({
-                message: 'El archivo se guardo Cortrtectamente',
+                message: 'El archivo se guardo Correctamente',
                 ruta: 'src/reports/pdf'
             });
         }

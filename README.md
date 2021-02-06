@@ -33,7 +33,6 @@
 
 ![Alt text](https://i.stack.imgur.com/U1c9F.png "Ejemplo")
 
-
 ##### Parametros:
 * Latitud= 40.365843
 * Lomgitud=-3.5874521

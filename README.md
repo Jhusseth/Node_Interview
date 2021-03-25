@@ -35,7 +35,7 @@
 
 ##### Parametros:
 * Latitud= 40.365843
-* Lomgitud= -3.5874521
+* Longitud= -3.5874521
 * Distancia=10
 
 *https://interview-nodejs.herokuapp.com/40.365843&-3.5874521/10*
@@ -47,7 +47,7 @@
 
  ##### Parametros:
 * Latitud= 40.365843 
-* Lomgitud= -3.5884521 
+* Longitud= -3.5884521 
 * type file=csv
 
 *http://localhost:3000/downloads/40.365843&-3.5884521/csv*
